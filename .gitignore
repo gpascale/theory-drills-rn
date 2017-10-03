@@ -3,3 +3,7 @@ node_modules/
 npm-debug.*
 .watchmanconfig
 .flowconfig
+.xcuserdata
+.xcuserstate
+xcuserdata/
+project.xcworkspace
