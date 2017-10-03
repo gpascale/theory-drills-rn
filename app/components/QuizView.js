@@ -1,10 +1,10 @@
 import React from 'react';
 import { TouchableHighlight, StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
-import Tts from 'react-native-tts';
 import { Constants } from 'music-theory-questions';
 import Questioner from './Questioner';
-import config from '../../config/config';
+import settings from '../config/settings';
+import speak from '../js/speaker';
 
 const Status = {
   STOPPED: Symbol('STOPPED'),
@@ -51,12 +51,12 @@ export default class QuizView extends React.Component {
     console.log('askOne!');
     const question = this.questioner.getQuestion();
     this.setState({ status: Status.QUESTION, question });
-    Tts.speak(question.questionText);
+    speak(question.questionText);
     this.timer = setTimeout(() => {
       this.setState({ status: Status.ANSWER });
-      this.timer = setTimeout(cb, config.ANSWER_TIME);
-      Tts.speak(question.answer);
-    }, config.QUESTION_TIME);
+      this.timer = setTimeout(cb, settings.ANSWER_TIME);
+      speak(question.answer);
+    }, settings.QUESTION_TIME);
   }
 
   render() {
@@ -65,7 +65,6 @@ export default class QuizView extends React.Component {
     return (
       <View style={{
         flex: 1,
-        backgroundColor: 'blue',
         flexDirection: 'column',
         justifyContent: 'space-around',
         width: '100%',
@@ -75,7 +74,6 @@ export default class QuizView extends React.Component {
           <View style={{
             flexDirection: 'column',
             justifyContent: 'space-around',
-            backgroundColor: 'red',
             height: 200
           }}>
             <Text style={{alignSelf:'center', fontSize:24, height: 50}}>

@@ -10,7 +10,7 @@ export default class Questioner {
   }
 
   getQuestion() {
-    const generator = chance.pickone([ this.chordQuestions, this.degreeQuestions ]);
+    const generator = chance.pickone([ this.chordQuestions/*, this.degreeQuestions*/ ]);
     return generator.generate();
   }
 
