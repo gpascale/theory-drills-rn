@@ -1,12 +1,13 @@
 import { Constants, ChordQuestions, DegreeQuestions } from 'music-theory-questions';
 const Chance = require('chance');
 const chance = new Chance();
+import settings from '../js/settings';
 
 export default class Questioner {
 
   constructor(options) {
-    this.chordQuestions = new ChordQuestions({ keys: ['C'] });
-    this.degreeQuestions = new DegreeQuestions({ keys: ['C'] });
+    this.chordQuestions = new ChordQuestions({ keys: Array.from(settings.keys) });
+    this.degreeQuestions = new DegreeQuestions({ keys: Array.from(settings.keys) });
   }
 
   getQuestion() {

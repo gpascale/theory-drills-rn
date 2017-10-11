@@ -13,7 +13,7 @@ const Status = {
   PAUSED: Symbol('PAUSED')
 };
 
-export default class QuizView extends React.Component {
+export default class QuizView extends
 
   constructor(props) {
     super(props);
