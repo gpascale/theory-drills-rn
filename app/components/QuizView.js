@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableHighlight, StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { Constants } from 'music-theory-questions';
-import Questioner from './Questioner';
+import QuizSession from '../js/quiz_session';
 import * as settings from '../js/settings';
 import speak from '../js/speaker';
 
@@ -17,7 +17,7 @@ export default class QuizView extends React.Component {
 
   constructor(props) {
     super(props);
-    this.questioner = new Questioner();
+    this.quizSession = new QuizSession();
     this.timer = null;
     this.state = {
       status: Status.STOPPED
@@ -49,7 +49,7 @@ export default class QuizView extends React.Component {
 
   askOne(cb) {
     console.log('askOne!');
-    const question = this.questioner.getQuestion();
+    const question = this.quizSession.getNextQuestion();
     this.setState({ status: Status.QUESTION, question });
     speak(question.questionText);
     this.timer = setTimeout(() => {
