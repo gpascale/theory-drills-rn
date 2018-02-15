@@ -7,3 +7,4 @@ npm-debug.*
 .xcuserstate
 xcuserdata/
 project.xcworkspace
+.DS_STORE

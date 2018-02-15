@@ -3,7 +3,7 @@ import { TouchableHighlight, StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { Constants } from 'music-theory-questions';
 import Questioner from './Questioner';
-import settings from '../config/settings';
+import * as settings from '../js/settings';
 import speak from '../js/speaker';
 
 const Status = {
@@ -54,9 +54,9 @@ export default class QuizView extends React.Component {
     speak(question.questionText);
     this.timer = setTimeout(() => {
       this.setState({ status: Status.ANSWER });
-      this.timer = setTimeout(cb, settings.ANSWER_TIME);
+      this.timer = setTimeout(cb, settings.get('ANSWER_TIME'));
       speak(question.answer);
-    }, settings.QUESTION_TIME);
+    }, settings.get('QUESTION_TIME'));
   }
 
   render() {
