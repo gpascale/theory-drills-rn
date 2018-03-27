@@ -7,7 +7,7 @@ import * as settings from '../js/settings';
 
 const questionFactories = {
   'ChordSpelling': new ChordQuestions(),
-  'Degree': new ChordQuestions(),
+  'Degree': new DegreeQuestions(),
   'Interval': new IntervalQuestions()
 };
 
@@ -21,10 +21,12 @@ export default class QuizSession {
 
   getNextQuestion() {
     const questionTypes = _.keys(_.pickBy(settings.get('questionTypes'), (val, key) => !!val));
+    console.log('qtypes is ', questionTypes);
     const randomType = chance.pickone(questionTypes);
+    console.log('qtype is ', randomType);
     const factory = questionFactories[randomType];
-    console.log('fact', factory);
     const question = factory.generate();
+    console.log('generated');
     this.history.push(question);
     return question;
   }

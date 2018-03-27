@@ -14,6 +14,8 @@ let settings = {
   questionTypes: _.zipObject(QuestionTypes, new Array(QuestionTypes.length).fill(true))
 };
 
+settings.questionTypes['Interval'] = false;
+
 export function get(setting) {
   if (settings[setting] === undefined)
     throw new Error('No such setting:', setting);

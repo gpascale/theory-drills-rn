@@ -54,7 +54,7 @@ class SettingsScreen extends React.Component {
                 style={{}}
                 onChange={checked => {
                   let newQuestionTypes = settings.get('questionTypes');
-                  newQuestionTypes[questionType] = checked;
+                  newQuestionTypes[questionType] = !checked;
                   settings.set('questionTypes', newQuestionTypes);
                   this.setState({ questionTypes: newQuestionTypes });
                 }}
